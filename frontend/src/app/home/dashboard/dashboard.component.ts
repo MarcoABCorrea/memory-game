@@ -20,11 +20,8 @@ export class DashboardComponent implements OnInit {
 	constructor(private usereService: UserService) {
 
 		this.usereService.getUserData().subscribe(
-			(response) => {
-				console.log('oh yea ', response);
-			},
-			() => {
-				console.error('Erro!', 'Ocorreu um erro ao retornar usuarios!', 'error');
+			result => {
+				console.log('res ', result);
 			});
 
 		this.players = [];
