@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;" *ngIf="hasLoggedUser()">
+	<a class="navbar-brand" [routerLink]="'home'">Awesome Store</a>
+
+	<div class="collapse navbar-collapse">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item" routerLinkActive="active">
+				<a class="nav-link" [routerLink]="'home'">Home</a>
+			</li>
+			<li class="nav-item" routerLinkActive="active" *ngIf="hasPermission">
+				<a class="nav-link" [routerLink]="'produtos'">Produtos</a>
+			</li>
+		</ul>
+		<form class="form-inline">
+			<span class="mr-sm-2">Olá, {{loggedUser.name}}</span>
+			<button class="btn btn-outline-primary my-2 my-sm-0" type="button" (click)="logout()">Logout</button>
+		</form>
+	</div>
+</nav>
+<div class="body">
+	<router-outlet></router-outlet>
+</div>

@@ -1,0 +1,51 @@
+@import "table";
+
+#page-wrapper {
+	padding: 0 15px;
+}
+
+li.nav-item.active {
+	font-weight: 500;
+}
+
+.panel {
+	margin-bottom: 20px;
+	border: 0;
+	border-radius: 2px;
+	box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.28);
+}
+
+.panel-body {
+	padding: 15px;
+	background-color: #fff;
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+	min-height: auto;
+
+	.table, .alert {
+		margin-bottom: 0;
+	}
+}
+
+.panel-heading {
+	background-color: rgba(43, 43, 43, 0.7);
+	color: white;
+	border-bottom: 1px solid #e3e3e3;
+	padding: 10px;
+
+	.panel-title {
+		font-size: 15px;
+		font-weight: bold;
+		line-height: 28px;
+		margin: 0;
+	}
+}
+
+.page-header {
+	color: #000000ad;
+	padding-bottom: 9px;
+	margin: 20px 0 20px;
+	border-bottom: 1px solid #eeeeee;
+}
+

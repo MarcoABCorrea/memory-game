@@ -1,0 +1,73 @@
+<div id="page-wrapper">
+	<div class="col-lg-12">
+		<h1 class="page-header">Dashboard</h1>
+	</div>
+
+	<div class="page-body">
+		<fieldset *ngIf="hasPermission">
+			<legend>Vendas por dispositivo</legend>
+			<div class="row">
+				<div class="col-md-12 col-lg-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<span class="panel-title">
+								Últimos 30 dias
+							</span>
+						</div>
+						<div class="panel-body">
+							<canvas baseChart [data]="deviceData" [labels]="deviceLabels" [colors]="chartColors"
+									[chartType]="'doughnut'">
+							</canvas>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 col-lg-6" *ngIf="showBurnDownChart">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<span class="panel-title">
+								Últimos 3 meses
+							</span>
+						</div>
+						<div class="panel-body">
+							<canvas id="burnDownChart" baseChart [datasets]="burnDownData" [options]="burnDownOptions"
+									[labels]="burnDownLabels" [colors]="lineChartColors" [chartType]="'line'">
+							</canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</fieldset>
+
+		<fieldset>
+			<legend>Checkout</legend>
+			<div class="row">
+				<div class="col-md-12 col-lg-6" *ngIf="showCheckoutChart">
+					<div class="panel panel-default">
+						<div class="panel-heading">Checkout X Origem (Porcentagem %)
+							<small>últimos 3 meses</small>
+						</div>
+						<div class="panel-body">
+							<canvas baseChart [datasets]="checkoutData" [labels]="checkoutLabels"
+									[colors]="lineChartColors"
+									[options]="checkoutOptions" [chartType]="'bar'">
+							</canvas>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12 col-lg-6" *ngIf="showConversionChart">
+					<div class="panel panel-default">
+						<div class="panel-heading">Conversão do Checkout (Porcentagem %)
+							<small>últimos 3 meses</small>
+						</div>
+						<div class="panel-body">
+							<canvas baseChart [datasets]="conversionData" [labels]="conversionLabels"
+									[colors]="lineChartColors"
+									[options]="conversionOptions" [chartType]="'bar'">
+							</canvas>
+						</div>
+					</div>
+				</div>
+			</div>
+		</fieldset>
+	</div>
+</div>
