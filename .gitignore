@@ -73,3 +73,4 @@ Thumbs.db
 /backend/dist/
 /backend/nbdist/
 /backend/.nb-gradle/
+/.metadata/
