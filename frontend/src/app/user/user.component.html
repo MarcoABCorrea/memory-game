@@ -1,0 +1,9 @@
+<div id="page-wrapper">
+    <label for="userName">Insert your name:</label>
+    <div class="input-group mb-3">      
+      <input type="text" class="form-control" placeholder="Username" [(ngModel)]="player.name">
+      <div class="input-group-append">
+        <span class="input-group-text" (click)="saveUser()">OK!</span>
+      </div>
+    </div>
+</div>

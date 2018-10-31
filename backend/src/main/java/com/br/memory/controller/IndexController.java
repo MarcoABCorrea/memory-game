@@ -1,4 +1,4 @@
-package com.example.easynotes.controller;
+package com.br.memory.controller;
 
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,6 +13,6 @@ public class IndexController {
 	@CrossOrigin
     @GetMapping
     public String sayHello() {
-        return "Hello and Welcome to the EasyNotes application. You can create a new Note by making a POST request to /api/notes endpoint.";
+        return "The app is up and running!";
     }
 }

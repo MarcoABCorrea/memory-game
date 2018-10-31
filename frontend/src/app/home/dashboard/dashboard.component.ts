@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import { PaginationInstance } from 'ngx-pagination';
-import { UserService } from '../../data/user.service';
+import { PlayerService } from '../../data/user.service';
 import { Player } from '../../models/player.model';
 
 @Component({
 	selector: 'app-dashboard',
 	templateUrl: './dashboard.component.html',
 	styleUrls: ['./dashboard.component.scss'],
-	providers: [UserService]
+	providers: [PlayerService]
 })
 export class DashboardComponent implements OnInit {
 
@@ -17,9 +17,9 @@ export class DashboardComponent implements OnInit {
 	protected fieldname: string;
 	protected order: string;
 
-	constructor(private usereService: UserService) {
+	constructor(private playerService: PlayerService) {
 
-		this.usereService.getUserData().subscribe(
+		this.playerService.getPlayerData().subscribe(
 			result => {
 				console.log('res ', result);
 			});
@@ -48,7 +48,7 @@ export class DashboardComponent implements OnInit {
 		
 		this.config = {
 			id: 'players',
-			itemsPerPage: 2,
+			itemsPerPage: 10,
 			currentPage: 1,
 			totalItems: this.players.length
 		};
