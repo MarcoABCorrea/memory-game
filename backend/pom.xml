@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.example</groupId>
-	<artifactId>easy-notes</artifactId>
+	<artifactId>memory-game</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
-	<name>easy-notes</name>
-	<description>Rest API for a Simple Note Taking Application</description>
+	<name>memory-game</name>
+	<description>Rest API for memory game</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
