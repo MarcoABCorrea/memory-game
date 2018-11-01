@@ -10,14 +10,10 @@ export class PlayerService {
 	}
 
 	createOrUpdatePlayer(player: Player) {		
-		return this.httpClient.post(`${environment.api}/`, player);
+		return this.httpClient.put(`${environment.api}/`, player);
 	}
 
 	getAllPlayers() {
 		return this.httpClient.get(`${environment.api}/`);
-	}
-
-	getPlayer(player: Player) {
-		return this.httpClient.get(`${environment.api}/${player.id}`);
 	}
 }

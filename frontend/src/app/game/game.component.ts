@@ -14,10 +14,10 @@ export class GameComponent implements OnInit {
 
   constructor(private playerService: PlayerService) { 
     this.currentPlayer = JSON.parse(localStorage.getItem('currentPlayer'));
-    this.playerService.getPlayer(this.currentPlayer).subscribe(
-			result => {
-        console.log('res ', result);
-      });
+    // this.playerService.getPlayer(this.currentPlayer).subscribe(
+		// 	result => {
+    //     console.log('res ', result);
+    //   });
   }
 
   ngOnInit() {

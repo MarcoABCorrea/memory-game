@@ -9,6 +9,8 @@ import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { NotFoundComponent } from './not-found/not-found/not-found.component';
 import { GameComponent } from './game/game.component';
 import { UserComponent } from './user/user.component';
+import { CardComponent } from './game/card/card.component';
+import { GridComponent } from './game/grid/grid.component';
 
 
 
@@ -19,7 +21,9 @@ import { UserComponent } from './user/user.component';
 		DashboardComponent,
 		NotFoundComponent,
 		GameComponent,
-		UserComponent
+		UserComponent,
+		CardComponent,
+		GridComponent
 	],
 	imports: [
 		BrowserModule,

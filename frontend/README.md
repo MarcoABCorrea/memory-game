@@ -8,7 +8,7 @@ Angular 4, angular-cli, lodash, ngx-pagination, Bootstrap 4, SASS, Font-Awesome,
 
 ## Setup
 
-In order to setup the frontend just to to `/frontend` folder and run 
+In order to setup the Angular application just run the following command from `/frontend` folder
 
 ```bash
 npm install
@@ -18,7 +18,7 @@ to download all dependencies
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 
 ## Build
 

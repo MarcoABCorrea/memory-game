@@ -10,11 +10,14 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.br.memory.exception.ResourceNotFoundException;
 import com.br.memory.model.Player;
 import com.br.memory.repository.MemoryRepository;
 
@@ -36,8 +39,22 @@ public class MemoryController {
     }
 
     @CrossOrigin
-    @PostMapping("/player")
+    @PutMapping("/player")
     public Player createPlayer(@Valid @RequestBody Player player) {
         return memoryRepository.save(player);
     }
+    
+//    @CrossOrigin
+//    @PutMapping("/player/{id}")
+//    public Player updatePlayer(@PathVariable(value = "id") Long playerId, @Valid @RequestBody Player playerDetails) {
+//
+//        Player player = memoryRepository.findById(playerId)
+//        		.orElseThrow(() -> new ResourceNotFoundException("Player", "id", playerId));
+//
+////        note.setTitle(playerDetails.getTitle());
+////        note.setContent(playerDetails.getContent());
+//        
+//    	Player updatedPlayer = memoryRepository.save(player);
+//        return updatedPlayer;
+//    }
 }
