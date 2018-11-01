@@ -1,13 +1,22 @@
 package com.br.memory.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "player")
@@ -19,10 +28,9 @@ public class Player {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
     private String name;
 
-    private String tries;
+    private int tries;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -50,11 +58,11 @@ public class Player {
 		this.name = name;
 	}
 
-	public String getTries() {
+	public int getTries() {
 		return tries;
 	}
 
-	public void setTries(String tries) {
+	public void setTries(int tries) {
 		this.tries = tries;
 	}
 

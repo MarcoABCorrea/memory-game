@@ -1,9 +1,17 @@
 <div id="page-wrapper">
-    <label for="userName">Insert your name:</label>
-    <div class="input-group mb-3">      
-      <input type="text" class="form-control" placeholder="Username" [(ngModel)]="player.name">
-      <div class="input-group-append">
-        <span class="input-group-text" (click)="saveUser()">OK!</span>
-      </div>
+    <div class="d-flex justify-content-center bd-highlight mb-3">
+      <div class="d-flex flex-nowrap">
+          <div class="p-2">
+            <label for="userName">Insert your name:</label>
+          </div>
+          <div class="p-2">       
+            <div class="input-group mb-3">      
+              <input type="text" class="form-control" placeholder="Username" [(ngModel)]="player.name">
+              <div class="input-group-append">
+                <span class="input-group-text" (click)="saveUser()">OK!</span>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
 </div>

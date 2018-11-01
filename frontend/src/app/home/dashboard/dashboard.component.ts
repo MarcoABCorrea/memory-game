@@ -19,39 +19,17 @@ export class DashboardComponent implements OnInit {
 
 	constructor(private playerService: PlayerService) {
 
-		this.playerService.getPlayerData().subscribe(
-			result => {
-				console.log('res ', result);
-			});
-
-		this.players = [];
-		let p1 = new Player();
-		p1.name = 'marco';
-		p1.tries = 20;
-
-		let p2 = new Player();
-		p2.name = 'pedro';
-		p2.tries = 15;
-
-		let p3 = new Player();
-		p3.name = 'enzo';
-		p3.tries = 8;
-		
-		let p4 = new Player();
-		p4.name = 'maria';
-		p4.tries = 25;
-
-		this.players.push(p1);
-		this.players.push(p2);
-		this.players.push(p3);
-		this.players.push(p4);
-		
 		this.config = {
 			id: 'players',
 			itemsPerPage: 10,
-			currentPage: 1,
-			totalItems: this.players.length
+			currentPage: 1
 		};
+
+		this.playerService.getAllPlayers().subscribe(
+			result => {
+				this.players = result as Array<Player>;
+				this.config.totalItems = this.players.length;
+			});
 	}
 
 	ngOnInit() {

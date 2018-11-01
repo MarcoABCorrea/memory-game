@@ -1,15 +1,22 @@
 package com.br.memory.controller;
 
-import com.br.memory.exception.ResourceNotFoundException;
-import com.br.memory.model.Player;
-import com.br.memory.repository.MemoryRepository;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-import java.util.List;
+import com.br.memory.model.Player;
+import com.br.memory.repository.MemoryRepository;
 
 @RestController
 @RequestMapping("/api")
@@ -17,45 +24,20 @@ public class MemoryController {
 
     @Autowired
     MemoryRepository memoryRepository;
+    
+    @PersistenceContext
+    EntityManager entityManager;
 
+    @CrossOrigin
     @GetMapping("/player")
     public List<Player> getAllPlayers() {
-        return memoryRepository.findAll();
+    	Query query = entityManager.createNativeQuery("SELECT * FROM player WHERE tries > 0 ORDER BY tries ASC", Player.class);
+    	return query.getResultList();
     }
 
+    @CrossOrigin
     @PostMapping("/player")
     public Player createPlayer(@Valid @RequestBody Player player) {
-    	System.out.println("saving " + player.getName());
         return memoryRepository.save(player);
-    }
-
-    @GetMapping("/player/{id}")
-    public Player getPlayerById(@PathVariable(value = "id") Long playerId) {
-        return memoryRepository.findById(playerId)
-                .orElseThrow(() -> new ResourceNotFoundException("Player", "id", playerId));
-    }
-
-    @PutMapping("/player/{id}")
-    public Player updateNote(@PathVariable(value = "id") Long playerId,
-                                           @Valid @RequestBody Player playerDetails) {
-
-        Player player = memoryRepository.findById(playerId)
-                .orElseThrow(() -> new ResourceNotFoundException("Player", "id", playerId));
-
-//        note.setTitle(playerDetails.getTitle());
-//        note.setContent(playerDetails.getContent());
-
-        Player updatedPlayer = memoryRepository.save(player);
-        return updatedPlayer;
-    }
-
-    @DeleteMapping("/player/{id}")
-    public ResponseEntity<?> deletePlayer(@PathVariable(value = "id") Long playerId) {
-        Player player = memoryRepository.findById(playerId)
-                .orElseThrow(() -> new ResourceNotFoundException("Player", "id", playerId));
-
-        memoryRepository.delete(player);
-
-        return ResponseEntity.ok().build();
     }
 }

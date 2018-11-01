@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Player } from '../models/player.model';
+import { Router } from "@angular/router";
 import { PlayerService } from '../data/user.service';
+import { Player } from '../models/player.model';
 
 @Component({
   selector: 'app-user',
@@ -12,13 +13,17 @@ export class UserComponent implements OnInit {
 
   private player: Player = new Player();
 
-  constructor(private playerService: PlayerService) { }
+  constructor(private playerService: PlayerService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  saveUser() {
-    console.log('pei ', this.player);
-    this.playerService.createOrUpdatePlayer(this.player);
+  saveUser() {    
+    this.playerService.createOrUpdatePlayer(this.player).subscribe(
+			result => {
+        this.player = result as Player;
+        localStorage.setItem('currentPlayer', JSON.stringify(this.player));
+        this.router.navigate(['/game']);
+			});
   }
 }
