@@ -42,8 +42,6 @@ The app defines following CRUD APIs.
 
     GET /api/player
     
-    POST /api/player
-    
-    PUT /api/player/{playerId}
+    PUT /api/player
 
 You can test them using postman or any other rest client.

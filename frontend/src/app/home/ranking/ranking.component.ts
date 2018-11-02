@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import * as _ from 'lodash';
 import { PaginationInstance } from 'ngx-pagination';
 import { PlayerService } from '../../data/user.service';
 import { Player } from '../../models/player.model';
 
 @Component({
-	selector: 'app-dashboard',
-	templateUrl: './dashboard.component.html',
-	styleUrls: ['./dashboard.component.scss'],
+	selector: 'app-ranking',
+	templateUrl: './ranking.component.html',
+	styleUrls: ['./ranking.component.scss'],
 	providers: [PlayerService]
 })
-export class DashboardComponent implements OnInit {
+export class RankingComponent {
 
 	protected players: Player[];
 	protected config: PaginationInstance;
@@ -30,9 +30,6 @@ export class DashboardComponent implements OnInit {
 				this.players = result as Array<Player>;
 				this.config.totalItems = this.players.length;
 			});
-	}
-
-	ngOnInit() {
 	}
 
 	sortRanking(fieldname, order) {

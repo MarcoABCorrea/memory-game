@@ -43,18 +43,4 @@ public class MemoryController {
     public Player createPlayer(@Valid @RequestBody Player player) {
         return memoryRepository.save(player);
     }
-    
-//    @CrossOrigin
-//    @PutMapping("/player/{id}")
-//    public Player updatePlayer(@PathVariable(value = "id") Long playerId, @Valid @RequestBody Player playerDetails) {
-//
-//        Player player = memoryRepository.findById(playerId)
-//        		.orElseThrow(() -> new ResourceNotFoundException("Player", "id", playerId));
-//
-////        note.setTitle(playerDetails.getTitle());
-////        note.setContent(playerDetails.getContent());
-//        
-//    	Player updatedPlayer = memoryRepository.save(player);
-//        return updatedPlayer;
-//    }
 }

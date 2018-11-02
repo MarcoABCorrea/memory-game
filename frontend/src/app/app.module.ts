@@ -1,38 +1,36 @@
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './home/dashboard/dashboard.component';
-import { NotFoundComponent } from './not-found/not-found/not-found.component';
 import { GameComponent } from './game/game.component';
+import { NotFoundComponent } from './not-found/not-found/not-found.component';
+import { PermissionGuard } from './permission.guard';
 import { UserComponent } from './user/user.component';
-import { CardComponent } from './game/card/card.component';
-import { GridComponent } from './game/grid/grid.component';
-
-
-
+import { RankingComponent } from './home/ranking/ranking.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
-		DashboardComponent,
+		RankingComponent,
 		NotFoundComponent,
 		GameComponent,
-		UserComponent,
-		CardComponent,
-		GridComponent
+		UserComponent
 	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
 		FormsModule,
 		HttpClientModule,
+		BrowserAnimationsModule,
 		NgxPaginationModule
 	],
-	providers: [],
+	providers: [
+		PermissionGuard
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule {
